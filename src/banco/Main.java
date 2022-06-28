@@ -7,10 +7,9 @@ public class Main {
 
         Banco banco = new Banco("Rua Luiz Oscar de Carvalho, nº 75", "Mercado Pago", 9823, new ArrayList<Cliente>(), new ArrayList<Conta>());
 
-        // cliente como classe abstrata derivando executivo, basico e cobrador
-        Cliente maria = new Cliente("Maria Silva", "Rua Desembargador Vitor Lima, nº 33", "113.890.719-79", "Executivo");
-        Cliente joao = new Cliente("João Olavo", "Rua Desembargador Vitor Lima, nº 33", "113.879.293-29", "Básico");
-        Cliente luisa = new Cliente("Luisa Souza", "Rua Desembargador Vitor Lima, nº 33", "838.333.432-90", "Cobrador");
+        Cliente maria = new Executivo("Maria Silva", "Rua Desembargador Vitor Lima, nº 33", "113.890.719-79");
+        Cliente joao = new Basico("João Olavo", "Rua Desembargador Vitor Lima, nº 33", "113.879.293-29");
+        Cliente luisa = new Cobrador("Luisa Souza", "Rua Desembargador Vitor Lima, nº 33", "838.333.432-90");
 
         Conta contaMaria = new Conta(1902, 10929, 800, maria);
         Conta contaJoao = new Conta(9020, 392102, 8000, joao);
@@ -30,29 +29,36 @@ public class Main {
         System.out.println(String.format("Nome: %s", banco.getNome()));
         System.out.println(String.format("Identificador: %d", banco.getIdentificador()));
 
+        System.out.println(" ");
+
         System.out.println("Clientes:");
         for (int i = 0; i < banco.getClientes().size(); i++) {
             String cliente = banco.getClientes().get(i).getNome();
             System.out.println(cliente);
         }
 
-        // transformar transacoes em interfaces
-        SaqueEmDinheiro t1 = new SaqueEmDinheiro(contaJoao, 900);
+        System.out.println(" ");
+
+        PagamentoServico t1 = new PagamentoServico(contaJoao, contaLuisa, "Manutenção de Celular", 150);
         Transferencia t2 = new Transferencia(contaMaria, contaJoao, 89);
-        Deposito t3 = new Deposito(contaLuisa, 800);
+        SaqueEmDinheiro t3 = new SaqueEmDinheiro(contaLuisa, 800);
 
         System.out.println("Transações Válidas:");
-        System.out.println("Saque em dinheiro, João");
+        System.out.println("Pagamento de Serviço, João");
         System.out.println("Transferência, Maria");
-        System.out.println("Depósito, João");
+        System.out.println("Saque em Dinheiro, Luisa");
 
-        t1.sacarValor();
+        t1.pagarServico();
         t2.transfereValor();
-        t3.depositaValor();
+        t3.sacarValor();
+
+        System.out.println(" ");
 
         System.out.println(String.format("Saldo João: %f", contaJoao.getSaldo()));
         System.out.println(String.format("Saldo Maria: %f", contaMaria.getSaldo()));
         System.out.println(String.format("Saldo Luisa: %f", contaLuisa.getSaldo()));
+
+        System.out.println(" ");
 
         System.out.println("Transações Inválidas:");
         System.out.println("Consulta de Saldo, Maria");
@@ -62,6 +68,8 @@ public class Main {
         ConsultaDeSaldo t4 = new ConsultaDeSaldo(contaMaria, 890);
         Transferencia t5 = new Transferencia(contaJoao, contaLuisa, 890);
         PagamentoServico t6 = new PagamentoServico(contaLuisa, contaJoao, "Manutenção de celular", 100);
+
+        System.out.println(" ");
 
         t4.consultaSaldo();
         t5.transfereValor();
