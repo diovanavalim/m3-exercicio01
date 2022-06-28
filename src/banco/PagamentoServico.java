@@ -41,7 +41,7 @@ public class PagamentoServico extends Transacao {
 
     public void pagarServico() {
         try {
-            if (!this.contaOrigem.getCliente().getTipo().equals("Básico")) {
+            if (!(this.contaOrigem.getCliente() instanceof Basico)) {
                 throw new ContaNaoAutorizada();
             }
 

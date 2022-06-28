@@ -1,6 +1,6 @@
 package banco;
 
-import java.util.ConcurrentModificationException;
+import excecoes.ContaNaoAutorizada;
 
 public class Deposito extends Transacao {
     public Deposito(Conta contaOrigem, double valor) {
@@ -19,8 +19,8 @@ public class Deposito extends Transacao {
 
     public void depositaValor() {
         try {
-            if (!this.contaOrigem.getCliente().getTipo().equals("Executivo")) {
-                throw new ConcurrentModificationException();
+            if (!(this.contaOrigem.getCliente() instanceof Executivo)) {
+                throw new ContaNaoAutorizada();
             } else {
                 double saldoFinal = this.contaOrigem.getSaldo() + this.valor;
                 this.contaOrigem.setSaldo(saldoFinal);

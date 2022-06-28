@@ -19,7 +19,7 @@ public class ConsultaDeSaldo extends Transacao {
 
     public void consultaSaldo() {
         try {
-            if (this.contaOrigem.getCliente().getTipo().equals("Executivo")) {
+            if (this.contaOrigem.getCliente() instanceof Executivo) {
                 throw new ContaNaoAutorizada();
             }
 

@@ -31,7 +31,7 @@ public class Transferencia extends Transacao {
 
     public void transfereValor() {
         try {
-            if (!this.contaOrigem.getCliente().getTipo().equals("Executivo")) {
+            if (!(this.contaOrigem.getCliente() instanceof Executivo)) {
                 throw new ContaNaoAutorizada();
             }
 

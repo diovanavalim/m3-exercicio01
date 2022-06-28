@@ -20,7 +20,7 @@ public class SaqueEmDinheiro extends Transacao {
 
     public void sacarValor() {
         try {
-            if (this.contaOrigem.getCliente().getTipo().equals("Executivo")) {
+            if (this.contaOrigem.getCliente() instanceof Executivo) {
                 throw new ContaNaoAutorizada();
             }
 
