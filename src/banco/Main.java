@@ -48,6 +48,8 @@ public class Main {
         System.out.println("Transferência, Maria");
         System.out.println("Saque em Dinheiro, Luisa");
 
+        System.out.println(" ");
+
         t1.pagarServico();
         t2.transfereValor();
         t3.sacarValor();
@@ -65,7 +67,7 @@ public class Main {
         System.out.println("Transferência, João");
         System.out.println("Pagamento de Serviço, Luisa");
 
-        ConsultaDeSaldo t4 = new ConsultaDeSaldo(contaMaria, 890);
+        ConsultaDeSaldo t4 = new ConsultaDeSaldo(contaMaria);
         Transferencia t5 = new Transferencia(contaJoao, contaLuisa, 890);
         PagamentoServico t6 = new PagamentoServico(contaLuisa, contaJoao, "Manutenção de celular", 100);
 
