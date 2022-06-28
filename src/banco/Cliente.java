@@ -2,18 +2,16 @@ package banco;
 
 import java.util.ArrayList;
 
-public class Cliente {
+public abstract class Cliente {
     String nome;
     String endereco;
     String cpf;
-    String tipo;
     ArrayList<Transacao> transacoes;
 
-    public Cliente(String nome, String endereco, String cpf, String tipo) {
+    public Cliente(String nome, String endereco, String cpf) {
         this.nome = nome;
         this.endereco = endereco;
         this.cpf = cpf;
-        this.tipo = tipo;
     }
 
     public String getNome() {
@@ -26,10 +24,6 @@ public class Cliente {
 
     public String getCpf() {
         return this.cpf;
-    }
-
-    public String getTipo() {
-        return this.tipo;
     }
 
     public ArrayList<Transacao> getTransacoes() {
@@ -46,10 +40,6 @@ public class Cliente {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public void setTransacoes(Transacao transacao) {
