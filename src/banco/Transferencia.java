@@ -3,20 +3,39 @@ package banco;
 import excecoes.ContaNaoAutorizada;
 import excecoes.SaldoInsuficienteException;
 
-public class Transferencia extends Transacao {
+public class Transferencia implements Transacao {
     Conta contaDestino;
+    Conta contaOrigem;
+    double valor;
 
     public Transferencia(Conta contaOrigem, Conta contaDestino, double valor) {
-        super(contaOrigem, valor);
         this.contaDestino = contaDestino;
+        this.contaOrigem = contaOrigem;
+        this.valor = valor;
     }
 
     public Conta getContaDestino() {
         return this.contaDestino;
     }
 
+    public Conta getContaOrigem() {
+        return this.contaOrigem;
+    }
+
+    public double getValor() {
+        return this.valor;
+    }
+
     public void setContaDestino(Conta contaDestino) {
         this.contaDestino = contaDestino;
+    }
+
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     @Override
