@@ -3,30 +3,49 @@ package banco;
 import excecoes.ContaNaoAutorizada;
 import excecoes.SaldoInsuficienteException;
 
-public class PagamentoServico extends Transacao {
-    String servico;
+public class PagamentoServico implements Transacao {
+    Conta contaOrigem;
     Conta contaDestino;
+    String servico;
+    double valor;
 
-    public PagamentoServico(Conta contaOrigem, Conta contaDestino, String servico, int valor) {
-        super(contaOrigem, valor);
+    public PagamentoServico(Conta contaOrigem, Conta contaDestino, String servico, double valor) {
+        this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
         this.servico = servico;
+        this.valor = valor;
     }
 
-    public String getServico() {
-        return this.servico;
+    public Conta getContaOrigem() {
+        return this.contaOrigem;
     }
 
     public Conta getContaDestino() {
         return this.contaDestino;
     }
 
+    public String getServico() {
+        return this.servico;
+    }
+
+    public double getValor() {
+        return this.valor;
+    }
+
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
+    }
+
+    public void setContaDestino(Conta contaDestino) {
+        this.contaDestino = contaDestino;
+    }
+
     public void setServico(String servico) {
         this.servico = servico;
     }
 
-    public void setContaDestino(Conta conta) {
-        this.contaDestino = conta;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     @Override

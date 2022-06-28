@@ -2,9 +2,29 @@ package banco;
 
 import excecoes.ContaNaoAutorizada;
 
-public class Deposito extends Transacao {
+public class Deposito implements Transacao {
+    Conta contaOrigem;
+    double valor;
+
     public Deposito(Conta contaOrigem, double valor) {
-        super(contaOrigem, valor);
+        this.contaOrigem = contaOrigem;
+        this.valor = valor;
+    }
+
+    public Conta getContaOrigem() {
+        return this.contaOrigem;
+    }
+
+    public double getValor() {
+        return this.valor;
+    }
+
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     @Override

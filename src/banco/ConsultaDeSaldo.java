@@ -2,9 +2,19 @@ package banco;
 
 import excecoes.ContaNaoAutorizada;
 
-public class ConsultaDeSaldo extends Transacao {
-    public ConsultaDeSaldo(Conta contaOrigem, int valor) {
-        super(contaOrigem, valor);
+public class ConsultaDeSaldo implements Transacao {
+    Conta contaOrigem;
+
+    public ConsultaDeSaldo(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
+    }
+
+    public Conta getContaOrigem() {
+        return this.contaOrigem;
+    }
+
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
     }
 
     @Override
